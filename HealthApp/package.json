@@ -1,0 +1,10 @@
+{
+  "name": "HealthApp",
+  "version": "0.0.0",
+  "description": "HealthApp",
+  "main": "server.js",
+  "author": {
+    "name": "Yue",
+    "email": ""
+  }
+}
