@@ -30,11 +30,13 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="public\patients\scripts\bootstrap.min.js" />
     <Compile Include="public\patients\scripts\app.js" />
     <Compile Include="server.js" />
     <Content Include="package.json" />
     <Content Include="public\patients\data\patientList.json" />
     <Content Include="public\index.html" />
+    <Content Include="public\patients\scripts\bootstrap.min.css" />
     <Content Include="public\patients\views\PatientDetails.html" />
     <Content Include="public\patients\views\PatientList.html" />
     <Content Include="README.md" />

@@ -3,24 +3,45 @@
 <html lang="en" ng-app="healthApp">
 <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+
     <script src="patients/scripts/app.js"></script>
 
     <title>Health SPA</title>
 </head>
 <body ng-controller="PatientListCtrl">
-    <div>
-        
-        <ul class="patientList">
-            <li ng-repeat="patient in patientList | orderBy:orderProp">
-                <span>Patient ID: {{patient.id}}</span>
-                <p>First Name: {{patient.fn}}</p>
-                <p>Last Name: {{patient.ln}}</p>
-                <p>Phone Number: {{patient.phoneNo}}</p>
-                <p>Last vist date: {{patient.lastVisitDate}}</p>
-                <p>Status: {{patient.status}}</p>
-            </li>
-        </ul>
+
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2">
+                Sort by:
+                <select ng-model="orderProp">
+                    <option value="fn">First name</option>
+                    <option value="ln">Last name</option>
+                </select>
+            </div>
+            <div class="col-md-10">
+                <ul class="patientList">
+                    <li ng-repeat="patient in patientList | orderBy:orderProp">
+
+                        <p>First Name: {{patient.fn}}</p>
+                        <p>Last Name: {{patient.ln}}</p>
+
+
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 </body>
 </html>
