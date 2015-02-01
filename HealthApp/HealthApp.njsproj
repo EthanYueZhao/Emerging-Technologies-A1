@@ -34,7 +34,7 @@
     <Compile Include="server.js" />
     <Content Include="package.json" />
     <Content Include="Public\Patients\Data\Patient.json" />
-    <Content Include="Public\Patients\Views\index.html" />
+    <Content Include="Public\index.html" />
     <Content Include="Public\Patients\Views\PatientDetails.html" />
     <Content Include="Public\Patients\Views\PatientList.html" />
     <Content Include="README.md" />

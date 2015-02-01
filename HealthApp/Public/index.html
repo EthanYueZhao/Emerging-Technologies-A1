@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" ng-app="healthApp">
+<head>
+    <meta charset="utf-8" />
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.min.js"></script>   -->
+    <script src="Public/Patients/Scripts/app.js"></script>
+
+    <title>Health SPA</title>
+</head>
+<body ng-controller="PatientListCtrl">
+    <div id="patientList">
+        <ul>
+            <li ng-repeat="patient in patientList">
+                <span>{{patient.id}}</span>
+                <p>{{patient.fn}}</p>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
