@@ -12,7 +12,7 @@
     <div>
         
         <ul class="patientList">
-            <li ng-repeat="patient in patientList">
+            <li ng-repeat="patient in patientList | orderBy:orderProp">
                 <span>Patient ID: {{patient.id}}</span>
                 <p>First Name: {{patient.fn}}</p>
                 <p>Last Name: {{patient.ln}}</p>
