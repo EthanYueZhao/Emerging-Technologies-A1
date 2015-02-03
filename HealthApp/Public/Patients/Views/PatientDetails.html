@@ -1,11 +1,44 @@
-﻿<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
-
-</body>
-</html>
+﻿<form class="form-horizontal" method="post">
+    <div class="form-group">
+        <label  class="col-sm-2 control-label">Patient ID:</label>
+        <div class="col-sm-2">
+            <input type="text" class="form-control" id="patientID" ng-model="patient.id" placeholder={{patient.id}}>
+        </div>
+    </div>
+    <div class="form-group">
+        <label  class="col-sm-2 control-label">First Name:</label>
+        <div class="col-sm-2">
+            <input type="text" class="form-control" id="firstName" ng-model="patient.fn" placeholder={{patient.fn}}>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Last Name:</label>
+        <div class="col-sm-2">
+            <input type="text" class="form-control" id="lastName" ng-model="patient.ln" placeholder={{patient.ln}}>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Phone Number:</label>
+        <div class="col-sm-2">
+            <input type="text" class="form-control" id="phoneNumber" ng-model="patient.phoneNo" placeholder={{patient.phoneNo}}>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Last Visit Date:</label>
+        <div class="col-sm-2">
+            <input type="text" class="form-control" id="lastVisitDate" ng-model="patient.lastVisitDate" placeholder={{patient.lastVisitDate}}>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Status:</label>
+        <div class="col-sm-2">
+            <input type="text" class="form-control" id="status" ng-model="patient.status" placeholder={{patient.status}}>
+        </div>
+    </div>
+   
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default" ng-click="update(patient)">Save and Return</button>
+        </div>
+    </div>
+</form>

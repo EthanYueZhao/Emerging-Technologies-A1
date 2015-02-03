@@ -1,11 +1,30 @@
-﻿<!DOCTYPE html>
+﻿
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+            Sort by:
+            <select ng-model="orderProp">
+                <option value="fn">First name</option>
+                <option value="ln">Last name</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <a class="btn btn-primary" href="#patients/views/patientDetails.html" role="button">Add a patient</a>
 
-</body>
-</html>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <ul class="patients">
+                <li ng-repeat="patient in patientList | orderBy:orderProp" class="thumb">
+                    <a href="#/patients/views/{{patient.id}}">{{patient.id}}</a>
+                    <p>First Name: {{patient.fn}}</p>
+                    <p>Last Name: {{patient.ln}}</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
