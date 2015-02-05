@@ -37,8 +37,14 @@
     </div>
    
     <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-default" ng-click="update(patient)">Save and Return</button>
+        <div class="col-sm-offset-2 col-sm-1">
+            <button type="submit" class="btn btn-default" ng-click="save()">Add</button>
+        </div>
+        <div class=" col-sm-1">
+            <button type="submit" class="btn btn-default" ng-click="update()">Update</button>
+        </div>
+        <div class=" col-sm-1">
+            <button type="submit" class="btn btn-default" ng-click="cancel()">Cancel</button>
         </div>
     </div>
 </form>
