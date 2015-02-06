@@ -1,4 +1,4 @@
-﻿<form name="patientDetailForm" class="form-horizontal" >
+﻿<form name="patientDetailForm" class="form-horizontal">
     <div class="form-group">
         <label class="col-sm-2 control-label">Patient ID:</label>
         <div class="col-sm-2">
@@ -35,7 +35,7 @@
     <div class="form-group">
         <label class="col-sm-2 control-label">Last Visit Date:</label>
         <div class="col-sm-2">
-            <input type="text" class="form-control" id="lastVisitDate" ng-model="patient.lastVisitDate" required placeholder={{patient.lastVisitDate}}>
+            <input type="date" class="form-control" id="lastVisitDate" ng-model="patient.lastVisitDate" required placeholder="patient.lastVisitDate | date:'dd-MM-yyyy'" />
         </div>
     </div>
     <div class="form-group">

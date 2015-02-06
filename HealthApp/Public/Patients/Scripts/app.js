@@ -54,15 +54,15 @@ patientControllers.controller('PatientDetailCtrl', ['$scope', '$routeParams', '$
             for (var i = 0; i < data.length; i++) {
                 if (data[i].id == $routeParams.patientId) {
                     $scope.patient = data[i];
+        $scope.patient.lastVisitDate = new Date(Date.parse(data[i].lastVisitDate));
                     index = i;
                     console.log(index);
                 }
             }
         });
-        
         $scope.update = function () {
+            //$scope.patientList.save( $scope.patient);
             console.log($scope.patient);
-            $http.post('/', $scope.patient);
         
         };
         
@@ -77,16 +77,19 @@ patientControllers.controller('PatientDetailCtrl', ['$scope', '$routeParams', '$
     }]);
 
 //Add new patient controller
-patientControllers.controller('AddPatientCtrl', ['$scope', '$location',
-    function ($scope, $location) {
+patientControllers.controller('AddPatientCtrl', ['$scope', '$location', 'Patients', 
+    function ($scope, $location,Patients) {
         
         $scope.nameRegex = /^[A-Z][a-zA-Z]\d/;
         $scope.phoneRegex = /^\(?([0 - 9]{ 3})\)?[-. ]?([0-9]{ 3})[-. ]?([0-9]{ 4})$/;
         
-        $scope.save = function () {
-            $scope.patientList.push($scope.patient);
+        var list = Patients.query();
+        
+        $scope.add = function () {
+           list.push($scope.patient);
             
-            console.log($scope.patient);
+            console.log(list);
+          //  list.save();
         };
         
         $scope.cancel = function () {
@@ -118,39 +121,3 @@ patientServices.factory('Patients', ['$resource',
         });
     }]);
 
-//patientControllers.controller('PatientListCtrl', ['$scope', 'Patients', 
-//    function ($scope, Patients) {
-
-//        $scope.patientList = Patients.query();
-//        $scope.orderProp = 'ln';
-//    }]);
-
-//patientControllers.controller('PatientDetailCtrl', ['$scope', '$routeParams', 'Patients',
-//    function ($scope, $routeParams, Patients) {
-
-
-//        var list = [];
-//list= Patients.query();
-//        console.log(list[0].id);
-
-
-//        for (var i = 0; i < list.length; i++) {
-//            console.log(i);
-//            if (list[i].id == $routeParams.patientId) {
-//                console.log($routeParams.patientId);
-//                $scope.patient = list[i];
-//                console.log($scope.patient);
-//            }
-//        }
-
-
-
-
-//        $scope.update = function (patient) {
-//            console.log(patient);
-//            // $http.post('public/patients/data/patientList.json', patient).success(function (data) { 
-//            $scope.patientList.push(patient);
-//            console.log(patient.id);
-//           // });
-//        };
-//    }]);
