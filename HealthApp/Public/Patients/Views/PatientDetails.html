@@ -1,41 +1,41 @@
-﻿<form class="form-horizontal" method="post">
+﻿<form class="form-horizontal" ng-controller="PatientListCtrl">
     <div class="form-group">
-        <label  class="col-sm-2 control-label">Patient ID:</label>
+        <label class="col-sm-2 control-label">Patient ID:</label>
         <div class="col-sm-2">
-            <input type="text" class="form-control" id="patientID" ng-model="patient.id" placeholder={{patient.id}}>
+            <input type="text" class="form-control" id="patientID" ng-model="patient.id" placeholder={{patient.id}} required>
         </div>
     </div>
     <div class="form-group">
-        <label  class="col-sm-2 control-label">First Name:</label>
+        <label class="col-sm-2 control-label">First Name:</label>
         <div class="col-sm-2">
-            <input type="text" class="form-control" id="firstName" ng-model="patient.fn" placeholder={{patient.fn}}>
+            <input type="text" class="form-control" id="firstName" ng-model="patient.fn" ng-pattern="nameRegex" required placeholder={{patient.fn}}>
         </div>
     </div>
     <div class="form-group">
         <label class="col-sm-2 control-label">Last Name:</label>
         <div class="col-sm-2">
-            <input type="text" class="form-control" id="lastName" ng-model="patient.ln" placeholder={{patient.ln}}>
+            <input type="text" class="form-control" id="lastName" ng-model="patient.ln" ng-pattern="name" required placeholder={{patient.ln}}>
         </div>
     </div>
     <div class="form-group">
         <label class="col-sm-2 control-label">Phone Number:</label>
         <div class="col-sm-2">
-            <input type="text" class="form-control" id="phoneNumber" ng-model="patient.phoneNo" placeholder={{patient.phoneNo}}>
+            <input type="text" class="form-control" id="phoneNumber" ng-model="patient.phoneNo" ng-pattern="phoneRegex" placeholder={{patient.phoneNo}}>
         </div>
     </div>
     <div class="form-group">
         <label class="col-sm-2 control-label">Last Visit Date:</label>
         <div class="col-sm-2">
-            <input type="text" class="form-control" id="lastVisitDate" ng-model="patient.lastVisitDate" placeholder={{patient.lastVisitDate}}>
+            <input type="text" class="form-control" id="lastVisitDate" ng-model="patient.lastVisitDate" required placeholder={{patient.lastVisitDate}}>
         </div>
     </div>
     <div class="form-group">
         <label class="col-sm-2 control-label">Status:</label>
         <div class="col-sm-2">
-            <input type="text" class="form-control" id="status" ng-model="patient.status" placeholder={{patient.status}}>
+            <input type="radio" class="form-control" id="status" ng-model="patient.status" value="Active" required placeholder={{patient.status}}>
         </div>
     </div>
-   
+
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-1">
             <button type="submit" class="btn btn-default" ng-click="save()">Add</button>

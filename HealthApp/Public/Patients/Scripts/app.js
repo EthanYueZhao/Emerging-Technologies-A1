@@ -38,6 +38,9 @@ patientControllers.controller('PatientListCtrl', ['$scope', '$http', '$routePara
         var index = 0;
         var list = Patients.query();
         
+        $scope.nameRegex = /^[A-Z][a-zA-Z]\d/;
+        $scope.phoneRegex=/^\(?([0 - 9]{ 3})\)?[-. ]?([0-9]{ 3})[-. ]?([0-9]{ 4})$/;
+        
         //$http.get('patients/data/patientList.json').success(function (data) {
         //    $scope.patientList = data;
         //    list = data;
@@ -46,18 +49,20 @@ patientControllers.controller('PatientListCtrl', ['$scope', '$http', '$routePara
         //});
         $scope.patientList = list;
         $scope.orderProp = 'ln';
-        
-        console.log(typeof $routeParams.patientId);
+               
+       // console.log(typeof id);
         //console.log(list);
-        if (typeof $routeParams.patientId == 'undefined') {
-            for (var i = 0; i < list.length; i++) {
-                if (list[i].id == $routeParams.patientId) {
-                    $scope.patient = list[i];
-                    index = i;
-                    console.log(index);
-                }
-            }
-        }
+        //  if (typeof id == undefined) {
+     
+            //for (var i = 0; i < list.length; i++) {
+            //    if (list[i].id == $routeParams.patientId) {
+            //        $scope.patient = list[i];
+            //        index = i;
+            //        console.log(index);
+            //    }
+            //}
+    
+        //  }
         
         
         $scope.save = function () {
@@ -90,7 +95,8 @@ patientControllers.controller('PatientDetailCtrl', ['$scope', '$routeParams', '$
             }
         });
         
-        
+        $scope.nameRegex = /^[A-Z][a-zA-Z]\d/;
+        $scope.phoneRegex = /^\(?([0 - 9]{ 3})\)?[-. ]?([0-9]{ 3})[-. ]?([0-9]{ 4})$/;
         
         $scope.update = function () {
             $scope.patientList[index] = $scope.patient;
@@ -111,13 +117,13 @@ patientControllers.controller('PatientDetailCtrl', ['$scope', '$routeParams', '$
 //    function ($scope, $location) {
 //        $scope.save = function () {
 //            $scope.patientList.push($scope.patient);
-            
+
 //            console.log($scope.patient);
 //        };
-        
+
 //        $scope.cancel = function () {
 //            $scope.patient = null;
-            
+
 //            console.log($scope.patient);
 //            console.log("cancel()");
 //            $location.path('/views/patientList.html');

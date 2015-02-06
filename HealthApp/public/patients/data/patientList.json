@@ -5,7 +5,7 @@
         "ln": "ln_1",
         "phoneNo": "647-891-8285",
         "lastVisitDate": "2015-01-31",
-        "status": true
+        "status": "Active"
     },
     {
         "id": 11112,
@@ -13,7 +13,7 @@
         "ln": "ln_2",
         "phoneNo": "647-891-8285",
         "lastVisitDate": "2015-01-31",
-        "status": false
+        "status":"Inactive"
     },
     {
         "id": 11113,
@@ -21,7 +21,7 @@
         "ln": "ln_13",
         "phoneNo": "647-891-8285",
         "lastVisitDate": "2015-01-31",
-        "status": true
+        "status":"Active"
     },
     {
         "id": 11114,
@@ -29,7 +29,7 @@
         "ln": "ln_4",
         "phoneNo": "647-891-8285",
         "lastVisitDate": "2015-01-31",
-        "status": true
+        "status": "Active"
     },
     {
         "id": 11115,
@@ -37,6 +37,6 @@
         "ln": "ln_0",
         "phoneNo": "647-891-8285",
         "lastVisitDate": "2015-01-31",
-        "status": true
+        "status": "Active"
     }
 ]
