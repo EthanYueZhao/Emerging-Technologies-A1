@@ -1,7 +1,5 @@
 ﻿'use strict';
 
-
-
 var healthApp = angular.module('healthApp', [
     'ngRoute',
     'patientControllers',
@@ -15,9 +13,9 @@ healthApp.config(['$routeProvider',
             templateUrl: 'patients/views/patientList.html',
             controller: 'PatientListCtrl'
         }).
-      when('/patients/views/patientDetails.html', {
-            templateUrl: 'patients/views/patientDetails.html',
-            controller: 'PatientListCtrl'
+      when('/patients/views/newPatient.html', {
+            templateUrl: 'patients/views/newPatient.html',
+            controller: 'AddPatientCtrl'
         }).
       when('/patients/views/:patientId', {
             templateUrl: 'patients/views/patientDetails.html',
@@ -32,61 +30,27 @@ healthApp.config(['$routeProvider',
 
 var patientControllers = angular.module('patientControllers', []);
 
-
+//Patient List Controller
 patientControllers.controller('PatientListCtrl', ['$scope', '$http', '$routeParams', '$location', 'Patients', 
     function ($scope, $http, $routeParams, $location, Patients) {
-        var index = 0;
-        var list = Patients.query();
-        
-        $scope.nameRegex = /^[A-Z][a-zA-Z]\d/;
-        $scope.phoneRegex=/^\(?([0 - 9]{ 3})\)?[-. ]?([0-9]{ 3})[-. ]?([0-9]{ 4})$/;
-        
-        //$http.get('patients/data/patientList.json').success(function (data) {
-        //    $scope.patientList = data;
-        //    list = data;
-        //    console.log($scope.patientList);
-        //    console.log(list);
-        //});
-        $scope.patientList = list;
-        $scope.orderProp = 'ln';
-               
-       // console.log(typeof id);
-        //console.log(list);
-        //  if (typeof id == undefined) {
-     
-            //for (var i = 0; i < list.length; i++) {
-            //    if (list[i].id == $routeParams.patientId) {
-            //        $scope.patient = list[i];
-            //        index = i;
-            //        console.log(index);
-            //    }
-            //}
-    
-        //  }
-        
-        
-        $scope.save = function () {
-            $scope.patientList.push($scope.patient);
-            
-            console.log($scope.patient);
-        };
-        
-        $scope.cancel = function () {
-            $scope.patient = null;
-            // console.log($scope.patient);
-            // console.log("cancel()");
-            $location.path('/views/patientList.html');
-        };
 
+        $scope.patientList = Patients.query();
+        $scope.orderProp = 'ln';
+        
     }]);
 
+//Patient Detail Controller
 patientControllers.controller('PatientDetailCtrl', ['$scope', '$routeParams', '$http', '$location',
     function ($scope, $routeParams, $http, $location) {
+        
+        $scope.nameRegex = /^[A-Z][a-zA-Z]\d/;
+        $scope.phoneRegex = /^\(?([0 - 9]{ 3})\)?[-. ]?([0-9]{ 3})[-. ]?([0-9]{ 4})$/;
+        
+
         var index = 0;
         $http.get('patients/data/patientList.json').success(function (data) {
             $scope.patientList = data;
-           // $scope.nameRegex = /^[A-Z][a-zA-Z]\d/;
-            //$scope.phoneRegex = /^\(?([0 - 9]{ 3})\)?[-. ]?([0-9]{ 3})[-. ]?([0-9]{ 4})$/;
+            
             for (var i = 0; i < data.length; i++) {
                 if (data[i].id == $routeParams.patientId) {
                     $scope.patient = data[i];
@@ -96,13 +60,13 @@ patientControllers.controller('PatientDetailCtrl', ['$scope', '$routeParams', '$
             }
         });
         
-        
-        
         $scope.update = function () {
-            $scope.patientList[index] = $scope.patient;
-            console.log(index + "-----------------");
             console.log($scope.patient);
+            $http.post('/', $scope.patient);
+        
         };
+        
+
         
         $scope.cancel = function () {
             $scope.patient = null;
@@ -112,23 +76,27 @@ patientControllers.controller('PatientDetailCtrl', ['$scope', '$routeParams', '$
         };
     }]);
 
-// add patient controller
-//patientControllers.controller('AddPatientCtrl', ['$scope', '$location',
-//    function ($scope, $location) {
-//        $scope.save = function () {
-//            $scope.patientList.push($scope.patient);
-
-//            console.log($scope.patient);
-//        };
-
-//        $scope.cancel = function () {
-//            $scope.patient = null;
-
-//            console.log($scope.patient);
-//            console.log("cancel()");
-//            $location.path('/views/patientList.html');
-//        };
-//    }]);
+//Add new patient controller
+patientControllers.controller('AddPatientCtrl', ['$scope', '$location',
+    function ($scope, $location) {
+        
+        $scope.nameRegex = /^[A-Z][a-zA-Z]\d/;
+        $scope.phoneRegex = /^\(?([0 - 9]{ 3})\)?[-. ]?([0-9]{ 3})[-. ]?([0-9]{ 4})$/;
+        
+        $scope.save = function () {
+            $scope.patientList.push($scope.patient);
+            
+            console.log($scope.patient);
+        };
+        
+        $scope.cancel = function () {
+            $scope.patient = null;
+            
+            console.log($scope.patient);
+            console.log("cancel()");
+            $location.path('/views/patientList.html');
+        };
+    }]);
 
 var patientServices = angular.module('patientServices', ['ngResource']);
 

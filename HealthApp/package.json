@@ -8,11 +8,12 @@
         "email": ""
     },
     "dependencies": {
-    "angular": "^1.3.36",
-    "angular-route": "*",
-    "bootstrap": "*",
-    "angular-resource": "*",
-    "express": "4.*",
-    "jquery": "*"
+        "angular": "^1.3.36",
+        "angular-route": "*",
+        "bootstrap": "*",
+        "angular-resource": "*",
+        "express": "4.*",
+        "jquery": "*",
+        "body-parser": "*"
     }
 }
