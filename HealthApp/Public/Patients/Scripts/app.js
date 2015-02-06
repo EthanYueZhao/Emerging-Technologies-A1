@@ -85,7 +85,8 @@ patientControllers.controller('PatientDetailCtrl', ['$scope', '$routeParams', '$
         var index = 0;
         $http.get('patients/data/patientList.json').success(function (data) {
             $scope.patientList = data;
-            
+           // $scope.nameRegex = /^[A-Z][a-zA-Z]\d/;
+            //$scope.phoneRegex = /^\(?([0 - 9]{ 3})\)?[-. ]?([0-9]{ 3})[-. ]?([0-9]{ 4})$/;
             for (var i = 0; i < data.length; i++) {
                 if (data[i].id == $routeParams.patientId) {
                     $scope.patient = data[i];
@@ -95,8 +96,7 @@ patientControllers.controller('PatientDetailCtrl', ['$scope', '$routeParams', '$
             }
         });
         
-        $scope.nameRegex = /^[A-Z][a-zA-Z]\d/;
-        $scope.phoneRegex = /^\(?([0 - 9]{ 3})\)?[-. ]?([0-9]{ 3})[-. ]?([0-9]{ 4})$/;
+        
         
         $scope.update = function () {
             $scope.patientList[index] = $scope.patient;
